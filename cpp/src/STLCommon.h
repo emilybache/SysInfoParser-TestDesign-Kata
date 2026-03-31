@@ -19,7 +19,6 @@ using chrono_clock = std::chrono::steady_clock;
 // scoped_lock
 using scoped_lock = std::scoped_lock<std::mutex>;
 
-// DiagServiceManager.cpp uses string << operator for binary building
 // These are not standard, providing plausible implementations
 inline std::string& operator<<(std::string& s, uint8_t b) {
     s.push_back(static_cast<char>(b));
