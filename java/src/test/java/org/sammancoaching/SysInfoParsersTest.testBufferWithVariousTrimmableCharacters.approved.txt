@@ -22,8 +22,8 @@ Resulting NodeSysInfo:
   Additional Infos:
     ArticleNumber: A
     DataVersion: PRJ_S_B_D_1.2
-    ProjectNumber: S.34
-    SerialNumber: P-12
+    ProjectNumber: P-12
+    SerialNumber: S.34
     SystemInfo: 0
 
 Remaining buffer length: 0

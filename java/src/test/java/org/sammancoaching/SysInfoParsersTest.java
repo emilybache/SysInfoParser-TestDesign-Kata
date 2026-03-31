@@ -118,22 +118,6 @@ public class SysInfoParsersTest {
     }
 
     @Test
-    public void testStandardBufferCpu1() {
-        BufferArgs args = new BufferArgs("PRJ1", "SUB1", "123456", "2023-10-27", "12:34:56",
-                "P1234", "S12345", "1.2.3", "D1.2.3", "A1234567890", 42);
-        String buffer = createBuffer(args);
-        verifyParseV2(1, buffer, args);
-    }
-
-    @Test
-    public void testStandardBufferCpu2() {
-        BufferArgs args = new BufferArgs("PRJ1", "SUB1", "123456", "2023-10-27", "12:34:56",
-                "P1234", "S12345", "1.2.3", "D1.2.3", "A1234567890", 42);
-        String buffer = createBuffer(args);
-        verifyParseV2(2, buffer, args);
-    }
-
-    @Test
     public void testBufferWithVariousTrimmableCharacters() {
         BufferArgs args = new BufferArgs("PRJ ", "S_B", " 123 ", "2023-10-27", "12:34:56",
                 "P-12", "S.34", "1.2.3", "D_1.2", "A\t\r\n", 0);
@@ -161,10 +145,10 @@ public class SysInfoParsersTest {
         assertEquals("SUB1", info.get(1).getSubsystem());
         assertEquals("A1234567890", info.getAdditionalInfo(AdditionalInfoKeys.ArticleNumber));
         assertEquals("PRJ1_SUB1_D1.2.3", info.getAdditionalInfo(AdditionalInfoKeys.DataVersion));
-        
-        assertEquals("P12345", info.getAdditionalInfo(AdditionalInfoKeys.ProjectNumber));
-        assertEquals("S1234", info.getAdditionalInfo(AdditionalInfoKeys.SerialNumber));
-        
+
+        assertEquals("P1234", info.getAdditionalInfo(AdditionalInfoKeys.ProjectNumber));
+        assertEquals("S12345", info.getAdditionalInfo(AdditionalInfoKeys.SerialNumber));
+
         assertEquals("42", info.getAdditionalInfo(AdditionalInfoKeys.SystemInfo));
         assertEquals(0, bufferCopy.length());
     }

@@ -18,12 +18,11 @@ public class SysInfoParsers {
         sDate = extractFixedLength(sBuffer, 10);
         sTime = extractFixedLength(sBuffer, 8);
 
-        // BUG: sSerialNumber is swapped with sProjectNumber
-        sSerialNumber = extractFixedLength(sBuffer, 5);
-        sSerialNumber = trimIf(sSerialNumber, " ,.-_\r\t\n\0");
-
-        sProjectNumber = extractFixedLength(sBuffer, 6);
+        sProjectNumber = extractFixedLength(sBuffer, 5);
         sProjectNumber = trimIf(sProjectNumber, " ,.-_\r\t\n\0");
+
+        sSerialNumber = extractFixedLength(sBuffer, 6);
+        sSerialNumber = trimIf(sSerialNumber, " ,.-_\r\t\n\0");
 
         sSWVersion = extractFixedLength(sBuffer, 11);
         sDataVersion = extractFixedLength(sBuffer, 11);
