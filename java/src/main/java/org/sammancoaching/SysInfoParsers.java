@@ -49,9 +49,9 @@ public class SysInfoParsers {
 
         if (cpuindex == 0 || cpuindex == 1) {
             check_utf8_MakeHexIfBinary(sProjectNumber);
-            _SysInfo.setAdditionalInfo(AdditionalInfoKeys.ProjectNumber, sProjectNumber);
+            _SysInfo.setAdditionalInfo(AdditionalInfoKeys.SerialNumber, sProjectNumber);
             check_utf8_MakeHexIfBinary(sSerialNumber);
-            _SysInfo.setAdditionalInfo(AdditionalInfoKeys.SerialNumber, sSerialNumber);
+            _SysInfo.setAdditionalInfo(AdditionalInfoKeys.ProjectNumber, sSerialNumber);
             _SysInfo.setAdditionalInfo(AdditionalInfoKeys.DataVersion,
                     _SysInfo.get(cpuindex).getProjectNameSubsystem() + "_" + sDataVersion);
             check_utf8_MakeHexIfBinary(sArtNo);

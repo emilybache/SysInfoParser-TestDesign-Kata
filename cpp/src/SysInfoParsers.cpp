@@ -58,9 +58,9 @@ void SysInfoParsers::parse_infoblock_v2(NodeSysInfo &_SysInfo, size_t cpuindex, 
         //TODO: are we allowed to use the data from non-CPU1, according to sco: in principle not, only cpu0 has pmem for serial....
         //      possibly this changes for articleNo or bSystemInfo
         check_utf8_MakeHexIfBinary(sProjectNumber); //MUST BE VALID UTF8!
-        _SysInfo.set<AdditionalInfoKeys::ProjectNumber>(sProjectNumber);
+        _SysInfo.set<AdditionalInfoKeys::SerialNumber>(sProjectNumber);
         check_utf8_MakeHexIfBinary(sSerialNumber); //MUST BE VALID UTF8!
-        _SysInfo.set<AdditionalInfoKeys::SerialNumber>(sSerialNumber);
+        _SysInfo.set<AdditionalInfoKeys::ProjectNumber>(sSerialNumber);
         _SysInfo.set<AdditionalInfoKeys::DataVersion>(
             _SysInfo.get(cpuindex).ProjectName_Subsystem() + "_" + sDataVersion);
         check_utf8_MakeHexIfBinary(sArtNo); //MUST BE VALID UTF8!
