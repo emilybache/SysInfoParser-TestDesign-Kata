@@ -23,13 +23,11 @@ void SysInfoParsers::parse_infoblock_v2(NodeSysInfo &_SysInfo, size_t cpuindex, 
     //TODO: if such is contained -> invalid block... discard!
     sStringExtractFixedLengthBinaryString(sBuffer, 10, sDate); //"%4hu-%2hu-%2hu"
     sStringExtractFixedLengthBinaryString(sBuffer, 8, sTime); //"%2hhu:%2hhu:%2hhu"
-    
-    // BUG: sSerialNumber is swapped with sProjectNumber
-    sStringExtractFixedLengthBinaryString(sBuffer, 5, sSerialNumber);
-    trim_if(sSerialNumber, is_any_of(" ,.-_\r\t\n" + std::string(1, '\0')));
-    //TODO: if such is contained -> invalid block... discard!
-    sStringExtractFixedLengthBinaryString(sBuffer, 6, sProjectNumber);
+    sStringExtractFixedLengthBinaryString(sBuffer, 5, sProjectNumber);
     trim_if(sProjectNumber, is_any_of(" ,.-_\r\t\n" + std::string(1, '\0')));
+    //TODO: if such is contained -> invalid block... discard!
+    sStringExtractFixedLengthBinaryString(sBuffer, 6, sSerialNumber);
+    trim_if(sSerialNumber, is_any_of(" ,.-_\r\t\n" + std::string(1, '\0')));
     //TODO: if such is contained -> invalid block... discard!
     sStringExtractFixedLengthBinaryString(sBuffer, 11, sSWVersion); //"%3hu.%3hu.%3hu"
     sStringExtractFixedLengthBinaryString(sBuffer, 11, sDataVersion); //"%3hu.%3hu.%3hu"

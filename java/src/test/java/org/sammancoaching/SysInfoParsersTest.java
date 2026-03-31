@@ -162,8 +162,8 @@ public class SysInfoParsersTest {
         assertEquals("A1234567890", info.getAdditionalInfo(AdditionalInfoKeys.ArticleNumber));
         assertEquals("PRJ1_SUB1_D1.2.3", info.getAdditionalInfo(AdditionalInfoKeys.DataVersion));
         
-        assertEquals("S1234", info.getAdditionalInfo(AdditionalInfoKeys.ProjectNumber));
-        assertEquals("P12345", info.getAdditionalInfo(AdditionalInfoKeys.SerialNumber));
+        assertEquals("P12345", info.getAdditionalInfo(AdditionalInfoKeys.ProjectNumber));
+        assertEquals("S1234", info.getAdditionalInfo(AdditionalInfoKeys.SerialNumber));
         
         assertEquals("42", info.getAdditionalInfo(AdditionalInfoKeys.SystemInfo));
         assertEquals(0, bufferCopy.length());

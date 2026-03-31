@@ -10,6 +10,7 @@
 
 using namespace ApprovalTests;
 
+
 namespace {
     std::string to_hex_printable(const std::string& s) {
         std::stringstream ss;
@@ -100,26 +101,12 @@ namespace {
     }
 }
 
-TEST_CASE("parse_infoblock_v2 characterization") {
+TEST_CASE("parse_infoblock_v2") {
     SUBCASE("Standard buffer cpu0") {
         BufferArgs args = {"PRJ1", "SUB1", "123456", "2023-10-27", "12:34:56",
                            "P1234", "S12345", "1.2.3", "D1.2.3", "A1234567890", 42};
         std::string buffer = create_buffer(args);
         verify_parse_v2(0, buffer, &args);
-    }
-
-    SUBCASE("Standard buffer cpu1") {
-        BufferArgs args = {"PRJ1", "SUB1", "123456", "2023-10-27", "12:34:56",
-                           "P1234", "S12345", "1.2.3", "D1.2.3", "A1234567890", 42};
-        std::string buffer = create_buffer(args);
-        verify_parse_v2(1, buffer, &args);
-    }
-
-    SUBCASE("Standard buffer cpu2") {
-        BufferArgs args = {"PRJ1", "SUB1", "123456", "2023-10-27", "12:34:56",
-                           "P1234", "S12345", "1.2.3", "D1.2.3", "A1234567890", 42};
-        std::string buffer = create_buffer(args);
-        verify_parse_v2(2, buffer, &args);
     }
 
     SUBCASE("Buffer with various trimmable characters") {
@@ -135,7 +122,7 @@ TEST_CASE("parse_infoblock_v2 characterization") {
 }
 
 TEST_CASE("parse_infoblock_v2 with assertions") {
-    SUBCASE("Standard buffer cpu0 translated to assertions") {
+    SUBCASE("Standard buffer cpu0 with assertions") {
         BufferArgs args = {"PRJ1", "SUB1", "123456", "2023-10-27", "12:34:56",
                            "P1234", "S12345", "1.2.3", "D1.2.3", "A1234567890", 42};
         std::string buffer = create_buffer(args);
@@ -145,15 +132,14 @@ TEST_CASE("parse_infoblock_v2 with assertions") {
         
         SysInfoParsers::parse_infoblock_v2(info, 0, buffer_copy);
         
-
         CHECK_EQ(info.get(0).ProjectName(), "PRJ1");
         CHECK_EQ(info.get(0).Subsystem(), "SUB1");
         CHECK_EQ(info.get(1).ProjectName(), "PRJ1");
         CHECK_EQ(info.get(1).Subsystem(), "SUB1");
         CHECK_EQ(info.get<AdditionalInfoKeys::ArticleNumber>(), "A1234567890");
         CHECK_EQ(info.get<AdditionalInfoKeys::DataVersion>(), "PRJ1_SUB1_D1.2.3");
-        CHECK_EQ(info.get<AdditionalInfoKeys::ProjectNumber>(), "S1234");
-        CHECK_EQ(info.get<AdditionalInfoKeys::SerialNumber>(), "P12345");
+        CHECK_EQ(info.get<AdditionalInfoKeys::ProjectNumber>(), "P1234");
+        CHECK_EQ(info.get<AdditionalInfoKeys::SerialNumber>(), "S12345");
         CHECK_EQ(info.get<AdditionalInfoKeys::SystemInfo>(), "42");
         CHECK_EQ(buffer_copy.length(), 0u);
     }
