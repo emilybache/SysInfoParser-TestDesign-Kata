@@ -1,0 +1,29 @@
+Input:
+  cpuindex: 0
+  Arguments to create_buffer:
+    projectName: PRJ1
+    subsystem: SUB1
+    revision: 123456
+    date: 2023-10-27
+    time: 12:34:56
+    projectNumber: P1234
+    serialNumber: S12345
+    swVersion: 1.2.3
+    dataVersion: D1.2.3
+    artNo: A1234567890
+    systemInfo: 42
+  buffer (hex): PRJ1    SUB11234562023-10-2712:34:56P1234S123451.2.3      D1.2.3     A1234567890*
+  buffer length: 81
+
+Resulting NodeSysInfo:
+  Software Versions:
+    CPU 0: PRJ1 (SUB1) v0.0.0
+    CPU 1: PRJ1 (SUB1) v0.0.0
+  Additional Infos:
+    ArticleNumber: A1234567890
+    DataVersion: PRJ1_SUB1_D1.2.3
+    ProjectNumber: P1234
+    SerialNumber: S12345
+    SystemInfo: 42
+
+Remaining buffer length: 0

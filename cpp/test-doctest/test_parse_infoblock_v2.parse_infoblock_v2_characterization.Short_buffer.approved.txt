@@ -1,0 +1,7 @@
+Input:
+  cpuindex: 0
+  buffer (hex): Too short
+  buffer length: 9
+
+Exception thrown during parsing: String is empty, cannot extract uint8_t
+

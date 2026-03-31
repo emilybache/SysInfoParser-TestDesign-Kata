@@ -1,0 +1,8 @@
+NodeSysInfo:
+  Software Versions:
+    CPU 0: MainProj (CPU0) v1.0.0
+    CPU 1: MainProj (CPU1) v1.1.0
+  Additional Infos:
+    ArticleNumber: ART678
+    SerialNumber: SN12345
+
